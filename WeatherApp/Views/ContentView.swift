@@ -9,8 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        HomeView()
+            .onAppear {
+                if Internet.isConnectedToNetwork() {
+                    // Retrieve API Data
+                }
+            }
     }
 }
 
