@@ -14,14 +14,8 @@ struct CurrentWeatherView: View {
     var body: some View {
         VStack {
             List {
-                ForEach(weather.weatherData.sorted(by: <), id: \.key) { key, value in
-                    HStack {
-                        Spacer()
-                        Text("\(formatTS(Int(key) ?? 0))")
-                            .foregroundColor(.gray)
-                    }
-                    
-                 
+                ForEach(weather.weatherData.sorted(by: <), id: \.key) { ts, temp in
+                    TempView(timeStamp: ts, temperature: temp)
                 }
             }
             .listStyle(GroupedListStyle())

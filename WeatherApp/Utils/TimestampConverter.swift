@@ -25,5 +25,5 @@ func formatTS(_ timestamp: Int) -> String {
         fmtHour = "0\(hour)"
     }
     
-    return "\(day)-\(month)-\(year) (\(fmtHour):00)"
+    return "\(day)-\(month) (\(fmtHour):00)"
 }

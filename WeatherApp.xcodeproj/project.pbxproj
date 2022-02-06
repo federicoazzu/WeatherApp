@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A3F847827AFE34C00F9B7B1 /* TimestampConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F847727AFE34C00F9B7B1 /* TimestampConverter.swift */; };
+		7A9A13ED27AFE9D6001C1592 /* TempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9A13EC27AFE9D6001C1592 /* TempView.swift */; };
 		7AC8010227ABED57003311BC /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8010127ABED57003311BC /* WeatherAppApp.swift */; };
 		7AC8010427ABED57003311BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC8010327ABED57003311BC /* ContentView.swift */; };
 		7AC8010627ABED59003311BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AC8010527ABED59003311BC /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		7A3F847727AFE34C00F9B7B1 /* TimestampConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampConverter.swift; sourceTree = "<group>"; };
+		7A9A13EC27AFE9D6001C1592 /* TempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempView.swift; sourceTree = "<group>"; };
 		7AC800FE27ABED57003311BC /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC8010127ABED57003311BC /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		7AC8010327ABED57003311BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				7AC8011127ABED7E003311BC /* HomeView.swift */,
 				7ADD8AFA27ABEF91003D0555 /* CurrentWeatherView.swift */,
 				7ADD8AFC27ABEF9E003D0555 /* SettingsView.swift */,
+				7A9A13EC27AFE9D6001C1592 /* TempView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				7AC8010427ABED57003311BC /* ContentView.swift in Sources */,
 				7ADD8AFD27ABEF9E003D0555 /* SettingsView.swift in Sources */,
 				7ADD8AFB27ABEF91003D0555 /* CurrentWeatherView.swift in Sources */,
+				7A9A13ED27AFE9D6001C1592 /* TempView.swift in Sources */,
 				7AC8010227ABED57003311BC /* WeatherAppApp.swift in Sources */,
 				7A3F847827AFE34C00F9B7B1 /* TimestampConverter.swift in Sources */,
 			);

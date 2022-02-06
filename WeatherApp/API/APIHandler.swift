@@ -39,25 +39,30 @@ struct Coord: Codable {
 class WeatherAPI : ObservableObject {
     private let API_KEY = "870761e49da34e680b73eb62f5edfee3"
     @Published var weatherData = [String: String]()
-    @Published var currentCity = "Copenhagen"
+    @Published var currentCity = "Bangkok"
+    @Published var errorMessage = ""
     
     func getData() {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=\(currentCity)&appid=\(API_KEY)&units=metric") else {
-            print("Invalid URL...")
-            return }
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=\(currentCity)&appid=\(API_KEY)&units=metric") else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
-            
-            let weather = try! JSONDecoder().decode(Weather.self, from: data)
-            
-            DispatchQueue.main.async {
-                print("Successfully received weather API data.")
+        
+            do {
+                let weather = try JSONDecoder().decode(Weather.self, from: data)
                 
-                for temp in weather.list {
-                    self.weatherData["\(temp.dt)"] = "\(temp.main.temp)C"
+                DispatchQueue.main.async {
+                    print("Successfully received weather API data.")
+                    
+                    for temp in weather.list {
+                        self.weatherData["\(temp.dt)"] = "\(Int(temp.main.temp))"
+                    }
                 }
+            } catch {
+                print("There was an error")
+                self.errorMessage = "There was an error..."
             }
+            
         }.resume()
     }
 }
