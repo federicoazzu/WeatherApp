@@ -36,18 +36,35 @@ struct Coord: Codable {
     var lon: Double
 }
 
-class WeatherAPI : ObservableObject {
+@MainActor class WeatherAPI : ObservableObject {
     private let API_KEY = "870761e49da34e680b73eb62f5edfee3"
+    private let CITY_KEY = "CITY_KEY"
+    
     @Published var weatherData = [String: String]()
-    @Published var currentCity = "Bangkok"
-    @Published var errorMessage = ""
+    @Published var status = "Everything is running great!"
+    @Published var currentCity = "Dubai"
+    
+    init() {
+        self.currentCity = UserDefaults.standard.string(forKey: CITY_KEY) ?? "Dubai"
+    }
+    
+    func saveCity(cityName: String) {
+        UserDefaults.standard.set(cityName, forKey: CITY_KEY)
+    }
+    
+    func changeCity(cityName: String) {
+        objectWillChange.send()
+        self.currentCity = cityName
+        saveCity(cityName: cityName)
+        getData()
+    }
     
     func getData() {
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=\(currentCity)&appid=\(API_KEY)&units=metric") else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
-        
+            
             do {
                 let weather = try JSONDecoder().decode(Weather.self, from: data)
                 
@@ -57,10 +74,10 @@ class WeatherAPI : ObservableObject {
                     for temp in weather.list {
                         self.weatherData["\(temp.dt)"] = "\(Int(temp.main.temp))"
                     }
+                    self.status = "Currently showing data for \(self.currentCity)"
                 }
             } catch {
-                print("There was an error")
-                self.errorMessage = "There was an error..."
+                print("There was an error! Probably due to a bad city name.")
             }
             
         }.resume()

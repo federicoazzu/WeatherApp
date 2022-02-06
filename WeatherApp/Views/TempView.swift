@@ -32,10 +32,10 @@ struct TempView: View {
         let intTemp = Int(temp) ?? 0
         
         switch intTemp {
-        case -100..<10:
+        case -100..<14:
             return .blue
-        case 10..<20:
-            return .black
+        case 14..<20:
+            return .orange
         case 20..<100:
             return .red
         default:
