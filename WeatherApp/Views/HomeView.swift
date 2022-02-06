@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var weather: WeatherAPI
     
     var body: some View {
         NavigationView {
@@ -21,7 +22,7 @@ struct HomeView: View {
                         Label("Settings", systemImage: "gearshape.fill")
                     }
             }
-            .navigationTitle("iWeather")
+            .navigationTitle(weather.currentCity)
             .accentColor(.orange)
         }
     }
@@ -30,5 +31,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(WeatherAPI())
     }
 }
